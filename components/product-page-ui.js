@@ -59,8 +59,8 @@ function ProductPageUI({ product }) {
   }
 
   return (
-    <div className="lg:flex -mx-6">
-      <div className="mb-8 px-6 md:mb-0 lg:w-1/2">
+    <div className="laptop:flex -mx-6">
+      <div className="mb-8 px-6 md:mb-0 laptop:w-1/2">
         <div className="w-full overflow-hidden relative bg-gainsboro rounded-lg">
           <Image
             src={primaryImage.url}
@@ -71,7 +71,7 @@ function ProductPageUI({ product }) {
           />
         </div>
       </div>
-      <div className="px-6 md:py-3 lg:w-1/2">
+      <div className="px-6 md:py-3 laptop:w-1/2">
         <h1 className="font-bold text-3xl md:text-6xl mb-3 text-primary leading-tight">
           {product.name}
         </h1>

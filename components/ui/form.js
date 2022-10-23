@@ -69,7 +69,7 @@ const Select = React.forwardRef(
             name={field}
             disabled={disabled}
             defaultValue={defaultValue}
-            className="appearance-none block w-full bg-none bg-white border border-gray-300 rounded-md py-2 pl-3 pr-10 text-base text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="appearance-none block w-full bg-none bg-white border border-gray-300 rounded-md py-2 pl-3 pr-10 text-base text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 tablet:text-sm"
             ref={ref}
             {...props}
           >

@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+  }
+}
+
+/* Dropdown-menu: since nested groupes are not supported we have to use 
+  regular css for the nested dropdowns 
+*/
+
+li.dropdown {
+  cursor: pointer;
+}
+
+li.dropdown > a {
+  display: inline-flex;
+  width: 100%;
+}
+
+li.dropdown > ul.dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(5px);
+  transition: all 0.3s ease-out;
+}
+
+li.dropdown:hover > ul.dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+li.dropdown-inner > ul.dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(calc(100% + 5px));
+  transition: all 0.3s ease-out;
+}
+
+li.dropdown-inner:hover > ul.dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(calc(100% - 2px));
+}
