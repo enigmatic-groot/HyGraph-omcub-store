@@ -1,18 +1,30 @@
-import * as React from 'react'
 import { DefaultSeo } from 'next-seo'
+import { useWindowScrollPosition } from 'rooks'
 
 import { defaultSeo } from 'next-seo.config'
 import Footer from '@/components/footer'
 import Header from '@/components/header/Header'
 
 function Layout({ children, footer, navigation }) {
+  const { scrollY } = useWindowScrollPosition()
+
   return (
-    <React.Fragment>
+    <>
       <DefaultSeo {...defaultSeo} />
-      <Header {...navigation} />
-      <div className="max-w-7xl mx-auto px-4 tablet:px-6">{children}</div>
-      <Footer {...footer} />
-    </React.Fragment>
+      <div
+        className={
+          process.env.NODE_ENV === 'development' ? 'debug-screens' : ''
+        }
+      >
+        <Header scrollY={scrollY} {...navigation} />
+
+        <main>
+          <div>{children}</div>
+        </main>
+
+        <Footer {...footer} />
+      </div>
+    </>
   )
 }
 
