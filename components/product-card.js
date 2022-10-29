@@ -8,11 +8,6 @@ function ProductCard({ id, images, name, price, slug }) {
   const { activeCurrency } = useSettingsContext()
 
   const [primaryImage1, primaryImage2] = images
-  console.log(
-    '🚀 ~ file: product-card.js ~ line 11 ~ ProductCard ~ images',
-    primaryImage1,
-    primaryImage2
-  )
 
   return (
     <article key={id}>

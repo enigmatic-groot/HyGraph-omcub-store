@@ -5,13 +5,15 @@ import getCategoryBySlug from '@/lib/get-category-slug'
 import getPageData from '@/lib/get-page-data'
 import ProductGrid from '@/components/product-grid'
 import SEO from '@/components/seo'
+import imgHero from '../../images/hero-home.jpg'
 
 function CategoryPage({ category }) {
   return (
-    <React.Fragment>
+    <>
       <SEO title={category.name} {...category} />
+      <Hero imgSrc={imgHero} />
       <ProductGrid products={category.products} />
-    </React.Fragment>
+    </>
   )
 }
 

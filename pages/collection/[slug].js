@@ -5,13 +5,16 @@ import getCollectionBySlug from '@/lib/get-collection-slug'
 import getPageData from '@/lib/get-page-data'
 import ProductGrid from '@/components/product-grid'
 import SEO from '@/components/seo'
+import Hero from '@/components/Hero'
 
 function CollectionPage({ collection }) {
+  const hero = collection.hero
   return (
-    <React.Fragment>
+    <>
       <SEO title={collection.name} {...collection} />
+      <Hero imgSrc={hero.image.url} />
       <ProductGrid products={collection.products} />
-    </React.Fragment>
+    </>
   )
 }
 
