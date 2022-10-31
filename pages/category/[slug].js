@@ -6,14 +6,16 @@ import getPageData from '@/lib/get-page-data'
 import ProductGrid from '@/components/product-grid'
 import SEO from '@/components/seo'
 import Hero from '@/components/Hero'
+import HeroCards from '@/components/HeroCards'
 
 function CategoryPage({ category }) {
-  const hero = category.hero
+  const { hero, heroCards } = category
 
   return (
     <>
       <SEO title={category.name} {...category} />
       <Hero imgSrc={hero.image.url} />
+      <HeroCards hero_cards={heroCards} />
       <ProductGrid products={category.products} />
     </>
   )

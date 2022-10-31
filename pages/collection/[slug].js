@@ -6,13 +6,16 @@ import getPageData from '@/lib/get-page-data'
 import ProductGrid from '@/components/product-grid'
 import SEO from '@/components/seo'
 import Hero from '@/components/Hero'
+import HeroCards from '@/components/HeroCards'
 
 function CollectionPage({ collection }) {
-  const hero = collection.hero
+  const { hero, heroCards } = collection
+
   return (
     <>
       <SEO title={collection.name} {...collection} />
       <Hero imgSrc={hero.image.url} />
+      <HeroCards hero_cards={heroCards} />
       <ProductGrid products={collection.products} />
     </>
   )
