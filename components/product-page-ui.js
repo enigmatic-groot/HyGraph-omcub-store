@@ -90,6 +90,37 @@ function ProductPageUI({ product }) {
               {product.description}
             </p>
           </div>
+          <div className="flex gap-3">
+            <div className="flex items-center">
+              <input
+                id="radio1"
+                type="radio"
+                name="radio"
+                className="hidden"
+                defaultChecked
+              />
+              <label
+                htmlFor="radio1"
+                className="flex items-center justify-center font-semibold cursor-pointer text-body-md"
+              >
+                <span className="w-10 h-10 p-[2px] inline-flex rounded-full border-2 border-neutral-400 flex-no-shrink justify-center items-center">
+                  S
+                </span>
+              </label>
+            </div>
+
+            <div className="flex items-center">
+              <input id="radio2" type="radio" name="radio" className="hidden" />
+              <label
+                htmlFor="radio2"
+                className="flex items-center justify-center font-semibold cursor-pointer text-body-md"
+              >
+                <span className="w-10 h-10 p-[2px] inline-flex rounded-full border-2 border-neutral-400 flex-no-shrink justify-center items-center">
+                  M
+                </span>
+              </label>
+            </div>
+          </div>
           <div className="md:flex md:flex-wrap -mx-3">
             {product.variants.length > 1 ? (
               <div className="md:w-3/4 px-3 mb-6">

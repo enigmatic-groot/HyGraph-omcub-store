@@ -46,3 +46,26 @@ li.dropdown-inner:hover > ul.dropdown-menu {
   visibility: visible;
   transform: translateX(calc(100% - 2px));
 }
+
+/* Radio Input */
+
+input[type='radio'] + label span {
+  transition: background 0.2s, transform 0.2s;
+}
+
+input[type='radio'] + label span:hover,
+input[type='radio'] + label:hover span {
+  @apply border-neutral-900;
+}
+
+input[type='radio']:checked + label span {
+  @apply border-primary-500;
+}
+
+input[type='radio']:checked + label {
+  /* color: #3490dc;  */
+}
+
+.section-product-cards-description > p > b {
+  @apply text-neutral-900;
+}
