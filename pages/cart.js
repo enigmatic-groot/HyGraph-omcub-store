@@ -11,6 +11,10 @@ import {
   ChevronUpSmallIcon,
   XSmallIcon
 } from '@/components/icons'
+
+import Container from '@/components/Container'
+import Section from '@/components/Section'
+
 import { formatCurrencyValue } from '@/utils/format-currency-value'
 import getPageData from '@/lib/get-page-data'
 import SEO from '@/components/seo'
@@ -90,97 +94,99 @@ function Cart() {
   if (isEmpty) return <p>Your cart is empty</p>
 
   return (
-    <React.Fragment>
+    <Section>
       <SEO title="Cart" />
-      {items.map((item) => {
-        return (
-          <div
-            className="md:bg-neutral-50 md:rounded-lg flex items-center py-3 md:py-6 md:px-6 md:mb-3"
-            key={item.id}
-          >
-            <div className="w-3/5 flex flex-grow items-center">
-              <div className="h-16 md:h-20 w-16 md:w-20 mr-4 bg-neutral-50 p-1 rounded-lg">
-                <Image
-                  src={item.image.url}
-                  width={item.image.width}
-                  height={item.image.height}
-                />
+      <Container>
+        {items.map((item) => {
+          return (
+            <div
+              className="md:bg-neutral-50 md:rounded-lg flex items-center py-3 md:py-6 md:px-6 md:mb-3"
+              key={item.id}
+            >
+              <div className="w-3/5 flex flex-grow items-center">
+                <div className="h-16 md:h-20 w-16 md:w-20 mr-4 bg-neutral-50 p-1 rounded-lg">
+                  <Image
+                    src={item.image.url}
+                    width={item.image.width}
+                    height={item.image.height}
+                  />
+                </div>
+                <div>
+                  <Link href={`/products/${item.slug}`}>
+                    <a className="text-neutral-800 font-medium text-sm md:text-base">
+                      {item.name}
+                    </a>
+                  </Link>
+                  <button
+                    className="text-neutral-400 hover:text-indigo-600 text-xs flex items-center focus:outline-none"
+                    onClick={() => removeItem(item.id)}
+                    disabled={submissionLoading}
+                  >
+                    <XSmallIcon className="h-3 w-3" />
+                    Remove
+                  </button>
+                </div>
               </div>
-              <div>
-                <Link href={`/products/${item[router.locale].slug}`}>
-                  <a className="text-neutral-800 font-medium text-sm md:text-base">
-                    {item[router.locale].name}
-                  </a>
-                </Link>
+              <div className="hidden md:flex flex-col items-center ml-auto">
                 <button
-                  className="text-neutral-400 hover:text-indigo-600 text-xs flex items-center focus:outline-none"
-                  onClick={() => removeItem(item.id)}
+                  className="text-neutral-400 hover:text-indigo-600 focus:outline-none p-1"
+                  onClick={() => incrementItemQuantity(item)}
                   disabled={submissionLoading}
                 >
-                  <XSmallIcon className="h-3 w-3" />
-                  Remove
+                  <ChevronUpSmallIcon className="h-4 w-4" />
+                </button>
+                <span className="mx-3 md:mx-6 p-1">{item.quantity}</span>
+                <button
+                  className="text-neutral-400 hover:text-indigo-600 focus:outline-none p-1"
+                  onClick={() => decrementItemQuantity(item)}
+                  disabled={submissionLoading}
+                >
+                  <ChevronDownSmallIcon className="h-4 w-4" />
                 </button>
               </div>
-            </div>
-            <div className="hidden md:flex flex-col items-center ml-auto">
-              <button
-                className="text-neutral-400 hover:text-indigo-600 focus:outline-none p-1"
-                onClick={() => incrementItemQuantity(item)}
-                disabled={submissionLoading}
-              >
-                <ChevronUpSmallIcon className="h-4 w-4" />
-              </button>
-              <span className="mx-3 md:mx-6 p-1">{item.quantity}</span>
-              <button
-                className="text-neutral-400 hover:text-indigo-600 focus:outline-none p-1"
-                onClick={() => decrementItemQuantity(item)}
-                disabled={submissionLoading}
-              >
-                <ChevronDownSmallIcon className="h-4 w-4" />
-              </button>
-            </div>
-            <div className="text-right md:w-1/5">
-              <p className="font-medium text-neutral-800">
-                {formatCurrencyValue({
-                  currency: activeCurrency,
-                  value: item.itemTotal
-                })}
-              </p>
-              {item.quantity > 1 && (
-                <p className="text-neutral-400 text-sm">
+              <div className="text-right md:w-1/5">
+                <p className="font-medium text-neutral-800">
                   {formatCurrencyValue({
                     currency: activeCurrency,
-                    value: item.price
-                  })}{' '}
-                  each
+                    value: item.itemTotal
+                  })}
                 </p>
-              )}
+                {item.quantity > 1 && (
+                  <p className="text-neutral-400 text-sm">
+                    {formatCurrencyValue({
+                      currency: activeCurrency,
+                      value: item.price
+                    })}{' '}
+                    each
+                  </p>
+                )}
+              </div>
             </div>
+          )
+        })}
+        <div className="mt-3 md:mt-6 py-3 md:py-6 border-t-2 border-neutral-50">
+          <div className="flex flex-col items-end">
+            <div className="flex flex-col items-end mb-3">
+              <span className="text-neutral-700">Sub total</span>
+              <span className="text-body-lg font-bold text-indigo-600">
+                {formatCurrencyValue({
+                  currency: activeCurrency,
+                  value: cartTotal
+                })}
+              </span>
+            </div>
+            <Button onClick={handleClick} disabled={submissionLoading}>
+              Checkout
+            </Button>
           </div>
-        )
-      })}
-      <div className="mt-3 md:mt-6 py-3 md:py-6 border-t-2 border-neutral-50">
-        <div className="flex flex-col items-end">
-          <div className="flex flex-col items-end mb-3">
-            <span className="text-neutral-700">Sub total</span>
-            <span className="text-body-lg font-bold text-indigo-600">
-              {formatCurrencyValue({
-                currency: activeCurrency,
-                value: cartTotal
-              })}
-            </span>
-          </div>
-          <Button onClick={handleClick} disabled={submissionLoading}>
-            Checkout
-          </Button>
         </div>
-      </div>
-    </React.Fragment>
+      </Container>
+    </Section>
   )
 }
 
-export async function getStaticProps({ locale }) {
-  const pageData = await getPageData({ locale })
+export async function getStaticProps() {
+  const pageData = await getPageData()
 
   return {
     props: {

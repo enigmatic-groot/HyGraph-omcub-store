@@ -21,20 +21,17 @@ function CollectionPage({ collection }) {
   )
 }
 
-export async function getStaticPaths({ locales }) {
+export async function getStaticPaths() {
   let paths = []
 
-  for (const locale of locales) {
-    const { collections } = await getAllCollections({ locale })
+  const { collections } = await getAllCollections()
 
-    paths = [
-      ...paths,
-      ...collections.map((collection) => ({
-        params: { slug: collection.slug },
-        locale
-      }))
-    ]
-  }
+  paths = [
+    ...paths,
+    ...collections.map((collection) => ({
+      params: { slug: collection.slug }
+    }))
+  ]
 
   return {
     paths,
@@ -42,10 +39,9 @@ export async function getStaticPaths({ locales }) {
   }
 }
 
-export async function getStaticProps({ locale, params }) {
-  const pageData = await getPageData({ locale })
+export async function getStaticProps({ params }) {
+  const pageData = await getPageData()
   const { collection } = await getCollectionBySlug({
-    locale,
     slug: params.slug
   })
 

@@ -14,9 +14,9 @@ function IndexPage({ products }) {
   )
 }
 
-export async function getStaticProps({ locale }) {
-  const pageData = await getPageData({ locale })
-  const { products } = await getAllProducts({ locale })
+export async function getStaticProps() {
+  const pageData = await getPageData()
+  const { products } = await getAllProducts()
 
   return {
     props: { ...pageData, products }

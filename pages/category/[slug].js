@@ -21,20 +21,17 @@ function CategoryPage({ category }) {
   )
 }
 
-export async function getStaticPaths({ locales }) {
+export async function getStaticPaths() {
   let paths = []
 
-  for (const locale of locales) {
-    const { categories } = await getAllCategories({ locale })
+  const { categories } = await getAllCategories()
 
-    paths = [
-      ...paths,
-      ...categories.map((category) => ({
-        params: { slug: category.slug },
-        locale
-      }))
-    ]
-  }
+  paths = [
+    ...paths,
+    ...categories.map((category) => ({
+      params: { slug: category.slug }
+    }))
+  ]
 
   return {
     paths,
@@ -42,10 +39,9 @@ export async function getStaticPaths({ locales }) {
   }
 }
 
-export async function getStaticProps({ locale, params }) {
-  const pageData = await getPageData({ locale })
+export async function getStaticProps({ params }) {
+  const pageData = await getPageData()
   const { category } = await getCategoryBySlug({
-    locale,
     slug: params.slug
   })
 

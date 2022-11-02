@@ -6,30 +6,33 @@ import getPageData from '@/lib/get-page-data'
 import ProductPageUI from '@/components/product-page-ui'
 import SEO from '@/components/seo'
 import Layout from '@/components/Layout'
+import Container from '@/components/Container'
+import Section from '@/components/Section'
 
 function ProductPage({ product }) {
   return (
     <Layout>
       <SEO title={product.name} {...product} />
-      <ProductPageUI product={product} />
+      <Section>
+        <Container>
+          <ProductPageUI product={product} />
+        </Container>
+      </Section>
     </Layout>
   )
 }
 
-export async function getStaticPaths({ locales }) {
+export async function getStaticPaths() {
   let paths = []
 
-  for (const locale of locales) {
-    const { products } = await getAllProducts({ locale })
+  const { products } = await getAllProducts()
 
-    paths = [
-      ...paths,
-      ...products.map((product) => ({
-        params: { slug: product.slug },
-        locale
-      }))
-    ]
-  }
+  paths = [
+    ...paths,
+    ...products.map((product) => ({
+      params: { slug: product.slug }
+    }))
+  ]
 
   return {
     paths,
@@ -37,10 +40,9 @@ export async function getStaticPaths({ locales }) {
   }
 }
 
-export async function getStaticProps({ locale, params }) {
-  const pageData = await getPageData({ locale })
+export async function getStaticProps({ params }) {
+  const pageData = await getPageData()
   const { product } = await getProductBySlug({
-    locale,
     slug: params.slug
   })
 

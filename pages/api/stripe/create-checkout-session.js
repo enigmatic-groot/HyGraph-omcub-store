@@ -3,15 +3,15 @@ import stripe from '@/lib/stripe-client'
 
 export default async (req, res) => {
   try {
-    const { currency, items, locale, success_url, ...rest } = req.body
+    const { currency, items, success_url, ...rest } = req.body
 
     const getProduct = async (id) => {
       const {
         product: { description, images, name, price, ...product }
       } = await hygraphClient.request(
         gql`
-          query ProductQuery($id: ID!, $locale: Locale!) {
-            product(where: { id: $id }, locales: [$locale]) {
+          query ProductQuery($id: ID!) {
+            product(where: { id: $id }) {
               productId: id
               description
               images(first: 1) {
@@ -23,8 +23,7 @@ export default async (req, res) => {
           }
         `,
         {
-          id,
-          locale
+          id
         }
       )
 
@@ -56,7 +55,6 @@ export default async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       line_items,
-      locale,
       payment_method_types: ['card'],
       success_url: `${success_url}?id={CHECKOUT_SESSION_ID}`,
       ...rest
