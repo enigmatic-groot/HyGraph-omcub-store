@@ -33,7 +33,7 @@ const Input = React.forwardRef(
           type={type}
           disabled={disabled}
           placeholder={placeholder}
-          className="appearance-none min-w-0 w-full bg-white border border-gray-300 py-2 px-4 text-base rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:placeholder-gray-400"
+          className="appearance-none min-w-0 w-full bg-white border border-neutral-300 py-2 px-4 text-base rounded-md text-neutral-900 placeholder-neutral-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:placeholder-neutral-400"
           ref={ref}
         />
         {children}
@@ -69,7 +69,7 @@ const Select = React.forwardRef(
             name={field}
             disabled={disabled}
             defaultValue={defaultValue}
-            className="appearance-none block w-full bg-none bg-white border border-gray-300 rounded-md py-2 pl-3 pr-10 text-base text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 tablet:text-sm"
+            className="appearance-none block w-full bg-none bg-white border border-neutral-300 rounded-md py-2 pl-3 pr-10 text-base text-neutral-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 tablet:text-sm"
             ref={ref}
             {...props}
           >
@@ -84,7 +84,7 @@ const Select = React.forwardRef(
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center">
             <ChevronDownSmallIcon
-              className="h-4 w-4 text-gray-400"
+              className="h-4 w-4 text-neutral-400"
               aria-hidden="true"
             />
           </div>
@@ -117,7 +117,7 @@ const Textarea = React.forwardRef(
           disabled={disabled}
           placeholder={placeholder}
           rows={rows}
-          className="appearance-none min-w-0 w-full bg-white border border-gray-300 py-2 px-4 text-base rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:placeholder-gray-400"
+          className="appearance-none min-w-0 w-full bg-white border border-neutral-300 py-2 px-4 text-base rounded-md text-neutral-900 placeholder-neutral-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:placeholder-neutral-400"
           ref={ref}
         />
         {children}

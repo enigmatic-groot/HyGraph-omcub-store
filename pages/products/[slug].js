@@ -5,13 +5,14 @@ import getProductBySlug from '@/lib/get-product-slug'
 import getPageData from '@/lib/get-page-data'
 import ProductPageUI from '@/components/product-page-ui'
 import SEO from '@/components/seo'
+import Layout from '@/components/Layout'
 
 function ProductPage({ product }) {
   return (
-    <React.Fragment>
+    <Layout>
       <SEO title={product.name} {...product} />
       <ProductPageUI product={product} />
-    </React.Fragment>
+    </Layout>
   )
 }
 

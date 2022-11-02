@@ -39,10 +39,10 @@ function Header({ pages = [] }) {
             <Link href="/cart">
               <a className="flex space-x-2">
                 <ShoppingCartIcon
-                  className="h-6 w-6 text-gray-400"
+                  className="h-6 w-6 text-neutral-400"
                   aria-hidden="true"
                 />
-                <span className="text-gray-900">
+                <span className="text-neutral-900">
                   {formatCurrencyValue({
                     currency: activeCurrency,
                     value: cartTotal

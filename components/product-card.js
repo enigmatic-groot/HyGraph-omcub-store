@@ -12,8 +12,8 @@ function ProductCard({ id, images, name, price, slug }) {
   return (
     <article key={id}>
       <Link href={`/products/${slug}`}>
-        <a className=" no-underline w-full h-full flex">
-          <div className="bg-gray-50 rounded-lg cursor-pointer w-full overflow-hidden relative px-3 py-6 md:px-6">
+        <a className="no-underline w-full h-full flex">
+          <div className="bg-neutral-50 rounded-lg cursor-pointer w-full overflow-hidden relative px-3 py-6 md:px-6">
             <div className="relative group">
               <div
                 className={`relative ${
@@ -44,10 +44,10 @@ function ProductCard({ id, images, name, price, slug }) {
             </div>
 
             <div className="pt-3 md:pt-6 text-center">
-              <p className="text-gray-800 font-semibold text-lg hover:text-indigo-600 mb-1">
+              <p className="text-neutral-800 font-semibold text-body-md hover:text-primary-500 mb-1">
                 {name}
               </p>
-              <p className="text-gray-400 text-sm">
+              <p className="text-neutral-400 text-sm">
                 {formatCurrencyValue({
                   currency: activeCurrency,
                   value: price

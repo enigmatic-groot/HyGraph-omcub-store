@@ -3,7 +3,7 @@ import { CartProvider } from 'react-use-cart'
 import '../styles/global.css'
 
 import { SettingsProvider } from '@/context/settings'
-import Layout from '@/components/layout'
+import Layout from '@/components/Layout'
 
 function App({ Component, pageProps }) {
   return (

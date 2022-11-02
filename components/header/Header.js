@@ -37,7 +37,7 @@ const Header = ({ scrollY }) => {
                     />
                   </svg>
                 </div>
-                {/* <span className="text-xl font-bold">Jeremiah&apos;s Store</span> */}
+                {/* <span className="text-body-lg font-bold">Jeremiah&apos;s Store</span> */}
               </a>
             </Link>
           </div>
@@ -47,7 +47,7 @@ const Header = ({ scrollY }) => {
                 className="relative px-2 text-gray-800 transition rounded-md appearance-none cursor-pointer snipcart-checkout hover:text-blue-600 focus:outline-none focus:text-blue-600"
                 aria-label="Cart"
               >
-                <span className="absolute -top-2 right-0 w-5 h-5  -mt-1 -mr-1 bg-blue-600 rounded-full text-[10px] text-white text-center flex items-center justify-center">
+                <span className="absolute -top-2 right-0 w-5 h-5  -mt-1 -mr-1 bg-blue-600 rounded-full text-[10px] text-white bg-primary-500 text-center flex items-center justify-center">
                   {totalItems}
                 </span>
                 <FaShoppingCart className="w-6 h-6 fill-current" />
